@@ -26,7 +26,6 @@ Detalles del diseño:
 5. Relaciona `Musical` como la superclase abstracta de `Instrumento` y `GrupoMusical`, y luego `GrupoMusical` como padre de `Percusion`, `Cuerdas` y `Vientos`.
 
 El diagrama debe mostrar herencia y la relación de composición entre GrupoMusical e Instrumento.
-
 ```mermaid
 classDiagram
     class Musical {
@@ -57,15 +56,9 @@ classDiagram
         + getNombre(): String
     }
 
-    class Percusion {
-        (constructor crea hijos)
-    }
-    class Cuerdas {
-        (constructor crea hijos)
-    }
-    class Vientos {
-        (constructor crea hijos)
-    }
+    class Percusion
+    class Cuerdas
+    class Vientos
 
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
