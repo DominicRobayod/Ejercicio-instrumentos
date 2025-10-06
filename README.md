@@ -66,11 +66,3 @@ classDiagram
     Percusion -- Cuerdas : relacionada
     Percusion -- Vientos : relacionada
     Cuerdas -- Vientos : relacionada
-
-    %% Nota
-    note right of GrupoMusical
-      tantas generalizaciones como
-      tipos de grupos queramos
-      agregar. Abierta a la extensión,
-      cerrada a la modificación.
-    end note
