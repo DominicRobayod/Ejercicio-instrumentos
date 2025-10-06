@@ -21,19 +21,6 @@ Detalles del diseño:
   - Atributos: `nombre: String`, `hijos: List`  
   - Métodos: `tocar()`, `afinar()`, `add()`, `remove()`, `getChildren()`, `getNombre()`
 
-- Clases concretas que heredan de GrupoMusical:
-  - **Percusion** (constructor crea instrumentos de percusión como Batería, Congas, Bongós)
-  - **Cuerdas** (constructor crea instrumentos de cuerdas como Guitarra, Violín, Arpa)
-  - **Vientos** (constructor crea instrumentos de viento como Flauta, Saxofón, Trompeta)
-
-Relaciones:  
-- Musical es superclase abstracta de Instrumento y GrupoMusical.  
-- GrupoMusical es padre de Percusion, Cuerdas y Vientos.  
-- Percusion, Cuerdas y Vientos están relacionadas entre sí.  
-- GrupoMusical tiene una relación de agregación con Musical.  
-- Instrumento hereda de Musical.  
-- Percusion, Cuerdas y Vientos heredan de GrupoMusical.  
-
 ---
 
 ## Diagrama en Mermaid
@@ -71,6 +58,5 @@ classDiagram
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
 
-    %% Agregación: GrupoMusical contiene 0..* Musical
-    GrupoMusical o-- "0..*" Musical : child
-    GrupoMusical o-- "1" Musical : parent
+    %% ÚNICA agregación (como en la imagen)
+    GrupoMusical o-- "0..*" Musical : children
