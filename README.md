@@ -18,14 +18,16 @@ m,andame el archuivo read me, donde salga este mismo prompt primero y que el cod
 
 Copia el bloque siguiente directamente en tu `README.md` o en cualquier archivo `.md` dentro de tu repo en GitHub para que se muestre el diagrama:
 
+# Diagrama de Clases - Patrón Composite (Musical)
+
 ```mermaid
 classDiagram
-    class Musical <<abstract>> {
+    class Musical {
         +tocar(): void
         +afinar(): void
-        +add(m: Musical): void
-        +remove(m: Musical): void
-        +getChildren(): List~Musical~
+        +add(m: Musical)
+        +remove(m: Musical)
+        +getChildren(): List
         +getNombre(): String
     }
 
@@ -39,43 +41,36 @@ classDiagram
 
     class GrupoMusical {
         -nombre: String
-        -hijos: List~Musical~
+        -hijos: List
         +GrupoMusical(nombre: String)
         +tocar(): void
         +afinar(): void
-        +add(m: Musical): void
-        +remove(m: Musical): void
-        +getChildren(): List~Musical~
+        +add(m: Musical)
+        +remove(m: Musical)
+        +getChildren(): List
         +getNombre(): String
     }
 
-    class Percusion {
-        +Percusion()
-        %% Constructor: crea instrumentos de percusión: Batería, Congas, Bongós
-    }
-    class Cuerdas {
-        +Cuerdas()
-        %% Constructor: crea instrumentos de cuerdas: Guitarra, Violín, Arpa
-    }
-    class Vientos {
-        +Vientos()
-        %% Constructor: crea instrumentos de viento: Flauta, Saxofón, Trompeta
-    }
+    class Percusion
+    class Cuerdas
+    class Vientos
 
-    %% Herencias
+    %% Herencia (Musical es superclase)
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
+
+    %% GrupoMusical es padre de las subclases concretas
     GrupoMusical <|-- Percusion
     GrupoMusical <|-- Cuerdas
     GrupoMusical <|-- Vientos
 
-    %% Agregación: GrupoMusical agrega (contiene) 0..* Musical
+    %% Agregación: GrupoMusical contiene 0..* Musical (hijos)
     GrupoMusical o-- "0..*" Musical : hijos
 
-    %% Asociaciones entre Percusion, Cuerdas y Vientos
-    Percusion -- Cuerdas : relacionada
-    Percusion -- Vientos : relacionada
-    Cuerdas -- Vientos : relacionada
+    %% Relaciones/Asociaciones entre tipos de grupos
+    Percusion -- Cuerdas
+    Percusion -- Vientos
+    Cuerdas -- Vientos
 ```
 
 ---
