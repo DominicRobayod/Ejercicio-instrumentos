@@ -22,9 +22,14 @@ Copia el bloque siguiente directamente en tu `README.md` o en cualquier archivo 
 
 ```mermaid
 classDiagram
+    %% Clase base (con compartimento similar a +Componente en la imagen)
     class Musical {
+        +Musical
+        - (abstract)
+        --
         +tocar(): void
         +afinar(): void
+        --
         +add(m: Musical)
         +remove(m: Musical)
         +getChildren(): List
@@ -32,7 +37,9 @@ classDiagram
     }
 
     class Instrumento {
-        -nombre: String
+        +Instrumento
+        -nombre : String
+        --
         +Instrumento(nombre: String)
         +tocar(): void
         +afinar(): void
@@ -40,8 +47,10 @@ classDiagram
     }
 
     class GrupoMusical {
-        -nombre: String
-        -hijos: List
+        +GrupoMusical
+        -nombre : String
+        -hijos : List
+        --
         +GrupoMusical(nombre: String)
         +tocar(): void
         +afinar(): void
@@ -51,26 +60,46 @@ classDiagram
         +getNombre(): String
     }
 
-    class Percusion
-    class Cuerdas
-    class Vientos
+    %% Subclases concretas (como en la imagen)
+    class Percusion {
+        +Percusion()
+        -- 
+        "Batería, Congas, Bongós"
+    }
+    class Cuerdas {
+        +Cuerdas()
+        --
+        "Guitarra, Violín, Arpa"
+    }
+    class Vientos {
+        +Vientos()
+        --
+        "Flauta, Saxofón, Trompeta"
+    }
 
-    %% Herencia (Musical es superclase)
+    %% Herencias
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
-
-    %% GrupoMusical es padre de las subclases concretas
     GrupoMusical <|-- Percusion
     GrupoMusical <|-- Cuerdas
     GrupoMusical <|-- Vientos
 
-    %% Agregación: GrupoMusical contiene 0..* Musical (hijos)
+    %% Agregación (diamante) — GrupoMusical contiene muchos Musical (hijos)
     GrupoMusical o-- "0..*" Musical : hijos
 
-    %% Relaciones/Asociaciones entre tipos de grupos
-    Percusion -- Cuerdas
-    Percusion -- Vientos
-    Cuerdas -- Vientos
+    %% Relaciones/Asociaciones entre grupos (líneas simples y punteadas para imitar la imagen)
+    Percusion -- Cuerdas : relacionada
+    Percusion -- Vientos : relacionada
+    Cuerdas -- Vientos : relacionada
+
+    %% Nota tipo post-it a la derecha (similar a la imagen)
+    note right of GrupoMusical
+      tantas generalizaciones como
+      tipos de grupos queramos
+      agregar. Abierta a la extensión,
+      cerrada a la modificación.
+    end note
+
 ```
 
 ---
