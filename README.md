@@ -6,6 +6,7 @@
 ## Prompt original
 Utiliza como referencia la siguiente imagen:
 <img width="850" height="618" alt="image" src="https://github.com/user-attachments/assets/e0954cc4-1417-4018-a53b-3f7b119653db" />
+<br>
 y genera un diagrama de clases UML en formato mermaid para el patrón Composite aplicado a un sistema musical.
 
 Detalles del diseño:
