@@ -28,6 +28,8 @@ Detalles del diseño:
 
 ```mermaid
 classDiagram
+    direction TB
+
     class Musical {
         <<abstract>>
         + afinar()
@@ -50,7 +52,5 @@ classDiagram
 
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
-    GrupoMusical "1" *-- "0..*" Musical : contiene
 
-    %% ÚNICA agregación (como en la imagen)
-    GrupoMusical o-- "0..*" Musical : children
+    GrupoMusical o-- Musical
