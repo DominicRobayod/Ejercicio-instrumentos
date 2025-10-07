@@ -4,11 +4,6 @@
 ### Julian Esteban Valencia Vargas 20241020048
 
 ## Prompt original
-Utiliza como referencia la siguiente imagen:
-<img width="850" height="618" alt="image" src="https://github.com/user-attachments/assets/e0954cc4-1417-4018-a53b-3f7b119653db" />
-<br>
-y genera un diagrama de clases UML en formato mermaid para el patrón Composite aplicado a un sistema musical.
-
 Detalles del diseño:
 
 - Clase abstracta **Musical** con métodos:
@@ -33,36 +28,29 @@ Detalles del diseño:
 
 ```mermaid
 classDiagram
-    %% Componente (arriba)
     class Musical {
-        +tocar(): void
-        +afinar(): void
-        +add(m: Musical)
-        +remove(m: Musical)
-        +getChildren(): List
-        +getNombre(): String
+        <<abstract>>
+        + afinar()
+        + tocar()
+        + add()
+        + remove()
     }
 
-    %% Hoja (izquierda)
     class Instrumento {
-        +tocar(): void
-        +afinar(): void
-        +getNombre(): String
+        + afinar()
+        + tocar()
     }
 
-    %% Composite (derecha)
     class GrupoMusical {
-        +tocar(): void
-        +afinar(): void
-        +add(m: Musical)
-        +remove(m: Musical)
-        +getChildren(): List
-        +getNombre(): String
+        + afinar()
+        + tocar()
+        + add()
+        + remove()
     }
 
-    %% Herencia
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
+    GrupoMusical "1" *-- "0..*" Musical : contiene
 
     %% ÚNICA agregación (como en la imagen)
     GrupoMusical o-- "0..*" Musical : children
