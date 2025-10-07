@@ -90,10 +90,6 @@ classDiagram
         + remove()
     }
 
-    class Percusion
-    class Cuerdas
-    class Vientos
-
     Musical <|-- Instrumento
     Musical <|-- GrupoMusical
 
@@ -236,4 +232,4 @@ Trompeta está tocando.
 Saxofón está tocando.
 ```
 
-
+---
